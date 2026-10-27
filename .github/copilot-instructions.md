@@ -39,7 +39,7 @@ src/
 │   ├── [...path].vue  # 404 page
 │   └── README.md      # Pages documentation
 ├── stores/            # Pinia stores for state management
-│   ├── pokemonStore.js # Main Pokémon data and functionality
+│   ├── championStore.js # Main Pokémon data and functionality
 │   ├── authStore.js   # Authentication simulation
 │   └── index.js       # Store configuration
 ├── plugins/           # Plugin configuration
@@ -94,9 +94,9 @@ After making changes, ALWAYS validate these scenarios:
 - ✅ Auto-import for components and Vue composables
 
 ### Pokémon Store Functionality
-The `pokemonStore.js` contains full CRUD functionality:
+The `championStore.js` contains full CRUD functionality:
 - **State**: 10 pre-loaded Pokémon, 14 types, favorites array
-- **Getters**: `getTypeById`, `getPokemonById`, `isFavorite`, `getFavorites`, `totalPokemons`
+- **Getters**: `getTypeById`, `getPokemonById`, `isFavorite`, `getFavorites`, `totalChampions`
 - **Actions**: `addPokemon`, `updatePokemon`, `deletePokemon`, `toggleFavorite`, `loadFavorites`
 - **Persistence**: Favorites saved to localStorage automatically
 
@@ -119,27 +119,30 @@ The extensive README.md contains a 25-step tutorial. Current implementation is a
 3. Auto-routing will create `/favoris` route automatically
 
 ### Working with Pokémon Data
+
 ```vue
+
 <script setup>
-import { usePokemonStore } from '@/stores/pokemonStore'
+  import {useChampionStore} from '@/stores/pokemonStore'
 
-const pokemonStore = usePokemonStore()
+  const pokemonStore = useChampionStore()
 
-// Access data
-const allPokemon = pokemonStore.pokemons // Array of 10 Pokémon
-const totalCount = pokemonStore.totalPokemons // Number: 10
-const favorites = pokemonStore.getFavorites() // Array of favorite Pokémon
+  // Access data
+  const allPokemon = pokemonStore.champions // Array of 10 Pokémon
+  const totalCount = pokemonStore.totalChampions // Number: 10
+  const favorites = pokemonStore.getFavorites() // Array of favorite Pokémon
 
-// Modify data
-pokemonStore.toggleFavorite(pokemon) // Add/remove favorite
-pokemonStore.addPokemon(newPokemon) // Add new Pokémon
+  // Modify data
+  pokemonStore.toggleFavorite(champion) // Add/remove favorite
+  pokemonStore.addPokemon(newPokemon) // Add new Pokémon
 </script>
 ```
 
 ### Working with Types
 Each Pokémon has `types` array with type IDs. Get type info:
+
 ```js
-const type = pokemonStore.getTypeById(1) // Returns { id: 1, name: 'Électrique', color: '#FFD700' }
+const type = championStore.getTypeById(1) // Returns { id: 1, name: 'Électrique', color: '#FFD700' }
 ```
 
 ### Adding Navigation Menu Items

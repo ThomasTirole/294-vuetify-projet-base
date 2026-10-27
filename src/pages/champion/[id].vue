@@ -10,7 +10,7 @@
     </v-btn>
 
     <v-alert
-      v-if="!pokemon"
+      v-if="!champion"
       type="error"
       variant="tonal"
     >
@@ -23,14 +23,14 @@
       max-width="800"
     >
       <v-img
-        :alt="pokemon.name"
+        :alt="champion.name"
         cover
         height="300"
-        :src="getImageUrl(pokemon.image)"
+        :src="getImageUrl(champion.image)"
       />
 
       <v-card-title class="text-h4">
-        {{ pokemon.name }}
+        {{ champion.name }}
       </v-card-title>
     </v-card>
   </v-container>
@@ -38,18 +38,18 @@
 
 <script setup>
   // Import du store Pokémon
-  import { usePokemonStore } from '@/stores/pokemonStore'
+  import { useChampionStore } from '@/stores/championStore.js'
   import { getImageUrl } from '@/utils/imageUrl'
 
   // Récupérer l'ID depuis les paramètres de la route
   const route = useRoute()
 
   // Instancier le store
-  const pokemonStore = usePokemonStore()
+  const championStore = useChampionStore()
 
   // Utiliser le getter du store pour trouver le Pokémon
   // computed se met à jour automatiquement si l'ID change
-  const pokemon = computed(() => {
-    return pokemonStore.getPokemonById(route.params.id)
+  const champion = computed(() => {
+    return championStore.getChampionById(route.params.id)
   })
 </script>
