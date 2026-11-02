@@ -13,6 +13,16 @@ export const useChampionStore = defineStore('champion', {
     getChampionById: state => championId => {
       return state.champions.find(champion => champion.id === Number(championId))
     },
+
+    allTags: (state) => {
+      // flatMap fusionne tous les tableaux tags en un seul tableau plat
+      // ex: [["Fighter"], ["Mage", "Assassin"]] → ["Fighter", "Mage", "Assassin"]
+      const tags = state.champions.flatMap(c => c.tags)
+
+      // Set supprime les doublons, le spread [...] recrée un tableau
+      // sort() trie alphabétiquement en tenant compte des accents (français)
+      return [...new Set(tags)].sort((a, b) => a.localeCompare(b, 'fr'))
+    },
   },
 
   actions: {
