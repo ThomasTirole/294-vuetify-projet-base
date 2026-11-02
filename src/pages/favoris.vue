@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <h1 class="text-h3 text-center my-6">
-      Mes favoris ({{ championStore.totalFavorites }}
+      Mes favoris ({{ championStore.totalFavorites }})
     </h1>
 
     <v-alert
