@@ -3,11 +3,13 @@
     <v-container class="d-flex align-center">
       <v-avatar
         class="mr-4 pa-0 cursor-pointer"
-        size="64"
+        image="@/assets/lol_logo.webp"
+        rounded="0"
+        size="48"
         @click="$router.push('/')"
       />
 
-      <v-toolbar-title>Pokédex</v-toolbar-title>
+      <v-toolbar-title>Faille de l'Invocateur</v-toolbar-title>
 
       <v-btn
         v-for="link in menuItems"
